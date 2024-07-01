@@ -1,0 +1,6 @@
+@Rodz.UI_HostAddress = http://localhost:5262
+
+GET {{Rodz.UI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

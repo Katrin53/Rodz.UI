@@ -1,0 +1,23 @@
+﻿@using DES.Domain.Entities
+@using Rodz.Blazor.Components
+<h3>Детали</h3>
+
+
+
+	@if(dessert!=null)
+	{
+	<div class="card mt-5" style="width: 18rem;">
+	<img src="@dessert.Image" class="card-img-top" alt="...">
+	<div class="card-body">
+	<h5 class="card-title">@dessert.Name</h5>
+	<p class="card-text">@dessert.Description</p>
+
+	</div>
+	</div>
+	}
+	@code {
+	[Parameter]
+	public Dessert dessert { get; set; }
+	[Parameter]
+	public EventCallback<Dessert> DessertChanged { get; set; }
+	}

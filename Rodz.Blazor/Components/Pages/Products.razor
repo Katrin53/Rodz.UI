@@ -1,0 +1,30 @@
+﻿@page "/products"
+@using DES.Domain.Entities
+@using DES.Domain.Models
+@using Rodz.Blazor.Components.ProductComponents
+@using Rodz.Blazor.Services
+
+
+@rendermode InteractiveServer
+
+<CascadingValue Value="ProductService">
+<KosList DessertSelected="ShowDetails" />
+<Pager/>
+</CascadingValue>
+
+<KosDetails dessert="SelectedDessert" />
+
+@code {
+[Inject] IProductService<Dessert> ProductService { get; set; }
+
+[Parameter]
+	public Dessert SelectedDessert { get; set; }
+	protected override async Task OnInitializedAsync()
+	{
+	await ProductService.GetProducts();
+	}
+	void ShowDetails(int id)
+	{
+	SelectedDessert = ProductService.Products.First(d => d.Id == id);
+	}
+}
